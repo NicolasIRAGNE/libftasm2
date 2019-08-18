@@ -1,13 +1,13 @@
 section .text
-    global _ft_bzero
+    global ft_bzero
 
-_ft_bzero:
+ft_bzero:
    cmp rsi, 8
    jl _part8
    mov qword[rdi], 0
    sub rsi, 8
    add rdi, 8
-   jmp _ft_bzero
+   jmp ft_bzero
 
 _part8:
    cmp rsi, 1

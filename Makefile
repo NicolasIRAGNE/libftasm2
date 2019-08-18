@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libfts.a
-CC = ~/.brew/bin/nasm
+CC = nasm
 
 SRCDIR   = srcs
 OBJDIR   = objs
@@ -21,7 +21,7 @@ INCLUDESDIR = includes
 OK_COLOR = \x1b[32;01m
 EOC = \033[0m
 
-SRCS_NO_PREFIX = ft_bzero.s ft_strlen.s
+SRCS_NO_PREFIX = ascii_table.s ft_isalpha.s ft_bzero.s ft_strlen.s
 
 SOURCES = $(addprefix $(SRCDIR)/, $(SRCS_NO_PREFIX))
 OBJECTS = $(addprefix $(OBJDIR)/, $(SRCS_NO_PREFIX:%.s=%.o))
@@ -30,7 +30,7 @@ INC = -I $(INCLUDESDIR)
 INCLUDES_NO_PREFIX = libftasm.h
 INCLUDES = $(addprefix $(INCLUDESDIR)/, $(INCLUDES_NO_PREFIX))
 
-CFLAGS = -f macho64
+CFLAGS = -f elf64
 
 all: $(BINDIR)/$(NAME)
 
