@@ -4,8 +4,8 @@ section .text
 
 _ft_isalpha:
 	lea r8, [rel ascii_table]
-	test edi, 0xffffff00
-	jnz _nik
+	cmp rdi, 0x7f
+	jg _nik
 	mov al, byte[r8 + rdi]
 	and al, 0b00000001
 	movzx eax, al

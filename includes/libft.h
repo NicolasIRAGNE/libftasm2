@@ -6,6 +6,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <limits.h>
+#include <fcntl.h>
 
 void	ft_bzero(void *s, size_t n);
 size_t	ft_strlen(char *s);
@@ -20,6 +21,11 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_puts(const char *s);
 int		debug_get_table(int c);
+char    *ft_strcat(char *restrict s1, const char *restrict s2);
+void    *ft_memset(void *b, int c, size_t len);
+void    *ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
+char    *ft_strdup(const char *s1);
+char*    ft_cat(int fd);
 
 # ifndef CHAR_MAX
 # define CHAR_MAX 255
