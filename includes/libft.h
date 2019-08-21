@@ -26,6 +26,9 @@ void    *ft_memset(void *b, int c, size_t len);
 void    *ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 char    *ft_strdup(const char *s1);
 char*    ft_cat(int fd);
+void ft_striter(char *s, void (*f)(char *));
+void ft_striteri(char *s, void (*f)(unsigned int, char *));
+int		ft_strequ(const char *s1, const char *s2);
 
 # ifndef CHAR_MAX
 # define CHAR_MAX 255

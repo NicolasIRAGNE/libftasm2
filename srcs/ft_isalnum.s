@@ -7,8 +7,9 @@ _ft_isalnum:
 	cmp rdi, 0x7f
 	jg _nik
 	mov al, byte[r8 + rdi]
-	and al, 0b00000100
-	movzx eax, al
+	test al, 0b00000100
+	je _nik
+	mov eax, 1
 	ret
 
 _nik:

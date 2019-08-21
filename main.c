@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:18:59 by niragne           #+#    #+#             */
-/*   Updated: 2019/08/20 18:47:46 by niragne          ###   ########.fr       */
+/*   Updated: 2019/08/21 09:14:30 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ int    test_mem(char *a, char *b, size_t n)
     
     while (i < n)
     {
-   	if (a[i] != b[i])
-		return i;
-        i++;
-    }
+   		if (a[i] != b[i])
+		{
+			return i;
+    	}
+    	i++;
+	}
     return (0);
 }
 
@@ -325,7 +327,8 @@ int	test_memset()
 	if (tmp)
 		printf(RED"Test memset failed at %d\n"EOC, tmp);
 	else
-		printf(GREEN"Test memset passed.\n"EOC);
+		printf(GREEN"Test memset passed.%s\n", EOC);
+
 	return (1);
 }
 
@@ -333,19 +336,80 @@ int test_cat()
 {
 	int fd;
 
-	fd = open("./Makefile", O_RDONLY);
+	fd = open("Makefile", O_RDONLY);
 	if (fd > 0)
 	{
-		errno = 0;
-		printf("%d\n",ft_cat(fd));
-		printf("%d\n", errno);
-		perror(errno);
+		ft_cat(fd);
 	}
 	else
 	{
 		printf(RED"test cat: failed to open file\n"EOC);
 	}
 	return (0);
+}
+
+void f_striter(char *c)
+{
+	*c += 1;
+}
+
+void f_striteri(unsigned int n, char *c)
+{
+	*c = n + '0';
+}
+
+void test_striter()
+{
+	char *s = strdup("0000000000");
+	char *s2 = strdup("1111111111");
+
+	ft_striter(s, f_striter);
+	if (strcmp(s, s2))
+		printf(RED"Test striter failed.\n"EOC);
+	else
+		printf(GREEN"Test striter passed.\n"EOC);
+}
+
+void test_striteri()
+{
+	char *s = strdup("0000000000");
+	char *s2 = strdup("0123456789");
+
+	ft_striteri(s, f_striteri);
+	if (strcmp(s, s2))
+		printf(RED"Test striteri failed.\n"EOC);
+	else
+		printf(GREEN"Test striteri passed.\n"EOC);
+}
+
+void	test_strequ()
+{
+	int errors = 0;
+	if (!ft_strequ("salut", "salut"))
+	{
+		dprintf(2, RED"Test strequ failed at string 'salut'"EOC);
+		errors++;
+	}
+	if (!ft_strequ("aaaaaaaaaaaaaaaaalllooo", "aaaaaaaaaaaaaaaaalllooo"))
+	{
+		dprintf(2, RED"Test strequ failed at string 'aaaaaaaaaaaaaaaaalllooo'"EOC);
+		errors++;
+	}
+	if (ft_strequ("salut", ""))
+	{
+		dprintf(2, RED"Test strequ failed at string 'salut' and ''"EOC);
+		errors++;
+	}
+	if (ft_strequ("", "salut"))
+	{
+		dprintf(2, RED"Test strequ failed at string '' and 'salut"EOC);
+		errors++;
+	}
+
+	if (errors)
+		printf(RED"Test strequ passed with %d errors.\n"EOC, errors);
+	else
+		printf(GREEN"Test strequ passed with %d errors.\n"EOC, errors);
 }
 
 int main()
@@ -358,6 +422,8 @@ int main()
 	test_strcat();
 	test_memset();
 	test_cat();
-	printf("test: %s\n", ft_strdup("bon ecoute"));
+	test_striter();
+	test_striteri();
+	test_strequ();
 	return (0);
 }

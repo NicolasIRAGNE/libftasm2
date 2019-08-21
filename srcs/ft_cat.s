@@ -3,26 +3,28 @@
 section .text
     global _ft_cat
     extern _read
-    extern _ft_puts
 
 _ft_cat:
-    push rbp
-	mov rbp, rsp
-;    mov rdx, BUFF_SIZE
-;    call _read ; rdi = fd, rsi = buf, rdx = len
+    push r12
+    mov r12, rdi
 
-_read_write:
-  ; Lit le fichier dans un buffer
+_loop:                  ; Lit le fichier dans un buffer
+    mov rdi, r12
     lea rsi, [rel buf]
     mov rdx, BUFF_SIZE
-    call _read
-    pop rbp
-    ret
+    call _read			; rdi = fd, rsi = buf, rdx = len
+    cmp rax, 0
+    jle _nik
+    mov rdx, rax
+    mov rax, 0x2000004	; write
+    mov rdi, 1
+    syscall
+    jmp _loop
+    
+_nik:
+    pop r12
     mov rax, rsi
     ret
-
-section .data
-    zero: db 0
 
 section .bss
     buf resb BUFF_SIZE

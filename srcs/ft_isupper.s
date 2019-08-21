@@ -7,8 +7,9 @@ _ft_isupper:
 	cmp rdi, 0x7f
 	jg _nik
 	mov al, byte[r8 + rdi]
-	and al, 0b00100000
-	movzx eax, al
+	test al, 0b00100000
+	jz _nik
+	mov eax, 1
 	ret
 
 _nik:

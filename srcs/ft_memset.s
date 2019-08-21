@@ -2,9 +2,11 @@ section .text
     global _ft_memset
 
 _ft_memset:
+    push rdi
     mov rcx, rdx
-    mov sil, al
+    mov al, sil
 	cld
     repne stosb
-    mov rdi, rax
+    pop rdi
+    mov rax, rdi
     ret
