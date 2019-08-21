@@ -1,0 +1,9 @@
+%define SYSCALL 0x2000004
+%define WRITE   0x4
+
+%define ALPHA 0b00000001
+%define DIGIT 0b00000010
+%define ALNUM 0b00000100
+%define PRINT 0b00001000
+%define LOWER 0b00010000
+%define UPPER 0b00100000

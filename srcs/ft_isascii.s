@@ -1,6 +1,5 @@
 section .text
 	global _ft_isascii
-	extern ascii_table
 
 _ft_isascii:
     cmp rdi, 0

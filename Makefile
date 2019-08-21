@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 18:20:16 by ldedier           #+#    #+#              #
-#    Updated: 2019/08/21 08:48:17 by niragne          ###   ########.fr        #
+#    Updated: 2019/08/21 11:49:53 by niragne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,16 +44,16 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.s $(OBJDIR)
 	$(CC) -o $@ $< $(CFLAGS)
 
 $(NAME): $(OBJECTS)
-	@ar rc $@ $^
-	@ranlib $(NAME)
-	@echo "$(OK_COLOR)$(NAME) linked with success !$(EOC)"
+	ar rc $@ $^
+	ranlib $(NAME)
+	echo "$(OK_COLOR)$(NAME) linked with success !$(EOC)"
 
 clean:
-	@rm -f $(OBJECTS)
-	@rm -rf $(OBJDIR)
+	rm -f $(OBJECTS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

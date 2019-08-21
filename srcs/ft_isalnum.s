@@ -1,3 +1,5 @@
+%include "srcs/types.s"
+
 section .text
 	global _ft_isalnum
 	extern ascii_table
@@ -7,7 +9,7 @@ _ft_isalnum:
 	cmp rdi, 0x7f
 	jg _nik
 	mov al, byte[r8 + rdi]
-	test al, 0b00000100
+	test al, ALNUM
 	je _nik
 	mov eax, 1
 	ret

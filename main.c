@@ -6,7 +6,7 @@
 /*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/17 15:18:59 by niragne           #+#    #+#             */
-/*   Updated: 2019/08/21 09:14:30 by niragne          ###   ########.fr       */
+/*   Updated: 2019/08/21 09:21:20 by niragne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 int    test_mem(char *a, char *b, size_t n)
 {
-    int i = 0;
+    size_t i = 0;
     
     while (i < n)
     {

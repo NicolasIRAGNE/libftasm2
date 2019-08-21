@@ -1,4 +1,5 @@
 %define BUFF_SIZE 4096
+%include "srcs/types.s"
 
 section .text
     global _ft_cat
@@ -16,7 +17,7 @@ _loop:                  ; Lit le fichier dans un buffer
     cmp rax, 0
     jle _nik
     mov rdx, rax
-    mov rax, 0x2000004	; write
+    mov rax, SYSCALL | WRITE
     mov rdi, 1
     syscall
     jmp _loop

@@ -1,3 +1,5 @@
+%include "srcs/types.s"
+
 section .text
 	global _ft_isupper
 	extern ascii_table
@@ -7,7 +9,7 @@ _ft_isupper:
 	cmp rdi, 0x7f
 	jg _nik
 	mov al, byte[r8 + rdi]
-	test al, 0b00100000
+	test al, UPPER
 	jz _nik
 	mov eax, 1
 	ret

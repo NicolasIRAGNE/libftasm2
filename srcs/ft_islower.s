@@ -1,3 +1,5 @@
+%include "srcs/types.s"
+
 section .text
 	global _ft_islower
 	extern ascii_table
@@ -7,7 +9,7 @@ _ft_islower:
 	cmp rdi, 0x7f
 	jg _nik
 	mov al, byte[r8 + rdi]
-	test al, 0b00010000
+	test al, LOWER
 	jz _nik
 	mov eax, 1
 	ret

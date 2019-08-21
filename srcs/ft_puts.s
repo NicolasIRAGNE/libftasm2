@@ -1,3 +1,5 @@
+%include "srcs/types.s"
+
 section .text
     global _ft_puts
     extern _ft_strlen
@@ -7,12 +9,12 @@ _ft_puts:
     call _ft_strlen
     mov rdi, 1
     mov rdx, rax
-    mov rax, 0x2000004 ; write
+    mov rax, SYSCALL | WRITE
     syscall
     cmp rax, 0
 	jl error
     mov r10, rax
-    mov rax, 0x2000004 ; write
+    mov rax, SYSCALL | WRITE
     mov rdi, 1
     lea rsi, [rel nl]
     mov rdx, 1
